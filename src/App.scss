@@ -1,0 +1,12 @@
+@import "./scss/all";
+
+.router-link {
+  text-decoration: none;
+}
+
+.App {
+  h2 {
+    color: map-get($gray, 700);
+    font-weight: 600;
+  }
+}

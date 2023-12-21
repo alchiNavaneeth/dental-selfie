@@ -1,0 +1,40 @@
+@import "variables";
+
+.pager-wrapper {
+    .number {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 12px;
+
+        .inside-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 16px;
+            height: 16px;
+            padding: .5rem;
+            // background-color: #d4dadd;
+            border-radius: 50%;
+        }
+
+        &:not(:first-child) {
+            &::before {
+                content: "";
+                position: absolute;
+                right: 55%;
+                background-color: #e0e0e0;
+                width: 90%;
+                height: 4px;
+                z-index: -1;
+            }
+        }
+
+
+        &.selected::before {
+            background-color: #4caf50;
+        }
+    }
+}

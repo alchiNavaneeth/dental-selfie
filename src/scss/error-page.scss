@@ -1,0 +1,16 @@
+@import "variables";
+
+.error-page {
+    h2 {
+        color: map-get($gray, 800);
+        margin-bottom: 12px;
+        font-size: 36px;
+    }
+
+    p {
+        color: map-get($gray, 700);
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}

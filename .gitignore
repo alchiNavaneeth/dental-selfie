@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+# custom
+_demo/
+_reference/
+_notes/
+
 # testing
 /coverage
 
