@@ -2,6 +2,10 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import { ErrorPage } from '../pages/ErrorPage';
 import { FirstStep } from '../pages/FirstStep';
+import { SecondStep } from '../pages/SecondStep';
+import { ThirdStep } from '../pages/ThirdStep';
+import { Output } from '../pages/Output';
+
 
 const router = createBrowserRouter([
     {
@@ -15,15 +19,15 @@ const router = createBrowserRouter([
     },
     {
         path: "/second",
-        element: <div>Hello 2</div>,
+        element: <SecondStep />,
     },
     {
         path: "/third",
-        element: <div>Hello 3</div>,
+        element: <ThirdStep />,
     },
     {
         path: "/output",
-        element: <div>Hello output</div>,
+        element: <Output />,
     }
 ]);
 export default router;

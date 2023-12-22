@@ -14,25 +14,16 @@ export const FirstStep = () => {
         setCameraStatus(status);
     }
 
-    const handleCapture = (target) => {
-        if (target.files) {
-            if (target.files.length !== 0) {
-                const img = target.files[0];
-                const imgUrl = URL.createObjectURL(img);
-                setCapturedImg(imgUrl);
-            }
-        }
-    }
-
     return (
         <div>
             <Header />
             <Pager number="1" />
             <Content
                 capturedImg={capturedImg}
+                setCapturedImg={setCapturedImg}
                 handleCamera={handleCamera}
                 cameraStatus={cameraStatus}
-                handleCapture={handleCapture}
+                navigation="/second"
                 heading="Upload front view"
                 description="Let's see your top and bottom teeth front on."
             />

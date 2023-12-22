@@ -1,18 +1,27 @@
-
 .capture-image-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    background-color: rgba(31, 30, 30, 0.5);
-    width: 100vw;
-    height: 100vh;
 
     .frame-wrapper {
+        background-color: rgba(0, 0, 0, .6);
+        mask-image: inherit;
+        mask-position: inherit;
+        -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0, .7) 25%, transparent 65%, rgb(0, 0, 0, .7) 25%),
+        linear-gradient(to top, rgb(0, 0, 0, .7) 25%, transparent 65%, rgb(0, 0, 0, .7) 25%);
+        -webkit-mask-position: 0px -30px;
+
+
         .frame {
-            border-radius: 20px;
-            height: 400px;
-            width: 400px;
+            position: absolute;
+            top: 30%;
+            border: 5px dashed #00FFA0;
+            height: 30.2%;
+            width: 97%;
+            margin-bottom: 20px;
+        }
+
+        .outer-circle {
+            padding: .25rem;
+            border-radius: 50%;
+            border: 3px solid white;
         }
     }
 }
