@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
+import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import {useTheme} from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
+import Camera from "react-html5-camera-photo";
+import 'react-html5-camera-photo/build/css/index.css';
 
 const App = () => {
 
   const theme = useTheme();
 
+  const [img, setImg] = useState(null);
+
+  const handleTakePhoto = (dataUri) => {
+    setImg(dataUri);
+  }
+
   return (
 
-    <div className="App">
+    <Box className="App" height="100vh">
+
       <Stack
         alignItems="center"
         justifyContent="center"
-        height={"85vh"}
+        // height="100%"
         padding={"0 2rem"}
       >
 
@@ -32,7 +42,16 @@ const App = () => {
           <Button variant="contained" color='primary'>Get Started</Button>
         </Link>
       </Stack>
-    </div>
+
+      {/* <Camera
+        onTakePhoto={(dataUri) => { handleTakePhoto(dataUri); }}
+      /> */}
+
+      {
+        img && 
+        <img src={img} alt="Taken Img" />
+      }
+    </Box>
   );
 }
 

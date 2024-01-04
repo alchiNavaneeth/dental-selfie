@@ -1,22 +1,24 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef } from "react";
 import '../App.scss';
 import Webcam from "react-webcam";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import CircleIcon from '@mui/icons-material/Circle';
 import { useTheme } from "@mui/material/styles";
+import CircleIcon from '@mui/icons-material/Circle';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-export const CaptureImage = ({ handleCamera, setCapturedImg }) => {
+
+export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
 
     const theme = useTheme();
     const webcamRef = useRef(null);
 
-    // const [capturedImage, setCapturedImage] = useState(null);
-
-    const handleCapture = useCallback((target) => {
+    const handleCapture = useCallback(() => {
         const outputImg = webcamRef.current.getScreenshot();
-        setCapturedImg(outputImg);
-    }, [webcamRef]);
+        handleImage(outputImg);
+        setShowCrop(true);
+        handleCamera(false);
+    }, [webcamRef, handleImage, handleCamera, setShowCrop]);
 
     return (
         <Box
@@ -25,8 +27,9 @@ export const CaptureImage = ({ handleCamera, setCapturedImg }) => {
             position="absolute"
             top={0}
             left={0}
-            width="100vw"
+            width="100%"
             height="100%"
+        // overflow="hidden"
         >
             <Webcam
                 className="webcam"
@@ -34,6 +37,9 @@ export const CaptureImage = ({ handleCamera, setCapturedImg }) => {
                 screenshotFormat="image/png"
                 screenshotQuality={1}
                 facingMode="user"
+                width="100%"
+                height="100%"
+                mirrored={true}
             />
 
             <Box
@@ -41,64 +47,58 @@ export const CaptureImage = ({ handleCamera, setCapturedImg }) => {
                 position="absolute"
                 top={0}
                 left={0}
-                zIndex={999}
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
                 height="100%"
                 width="100%"
             >
+                <Box
+                    className="pointer"
+                    height="30px"
+                    width="45px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    borderRadius="50px"
+                    bgcolor={theme.palette.grey.whiteShade}
+                    position={"absolute"}
+                    top={20}
+                    left={20}
+                    onClick={() => {
+                        handleCamera(false);
+                    }}
+                >
+                    <ChevronLeftIcon
+                        className="go-back-icon"
+                        htmlColor={theme.palette.blueGrey.blueGrey2}
+                        fontSize="medium"
+                    />
+                </Box>
                 <Typography variant="h6" color="white" fontWeight={600} position="absolute" bottom={"32%"} >
                     Align your teeth inside the frame
                 </Typography>
 
                 <div className="frame"></div>
 
-                <Typography variant="h6" color="white" fontWeight={600} fontSize={16} position="absolute" bottom={"16%"} >
-                    Capture
-                </Typography>
                 <Box
-                    className="outer-circle"
+                    className="outer-circle pointer"
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
                     position="absolute"
-                    bottom={"20%"}
+                    bottom={"16%"}
                 >
                     <CircleIcon
+                        className="circle-icon"
                         htmlColor={theme.palette.grey.whiteShade}
-                        fontSize="large"
-                        onClick={() => {
-                            handleCamera(false);
-                            handleCapture();
-                        }}
+                        onClick={handleCapture}
                     />
                 </Box>
 
-                {/*  .. .....  Old  . ....  .. ..... */}
-                {/* <div className="frame">
-                    <Webcam
-                        ref={webcamRef}
-                        screenshotFormat="image/png"
-                        screenshotQuality={1}
-                        videoConstraints={videoConstraints}
-                        onUserMediaError={(error) => {
-                            console.log(error);
-                        }}
-                    />
-                </div>
-                <Box
-                    className="outer-circle"
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                >
-                    <CircleIcon
-                        htmlColor={theme.palette.grey.whiteShade}
-                        fontSize="large"
-                        onClick={() => handleCamera(false)}
-                    />
-                </Box> */}
+                <Typography variant="h6" color="white" fontWeight={600} fontSize={16} position="absolute" bottom={"12%"} >
+                    Capture
+                </Typography>
             </Box>
         </Box>
     )

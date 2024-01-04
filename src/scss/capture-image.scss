@@ -1,13 +1,17 @@
 .capture-image-wrapper {
+    // background-color: rgba(0, 0, 0);
 
     .frame-wrapper {
-        background-color: rgba(0, 0, 0, .6);
+        // background-color: rgba(0, 0, 0, .6);
+        background-color: rgba(0, 0, 0);
+        opacity: .5;
         mask-image: inherit;
         mask-position: inherit;
-        -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0, .7) 25%, transparent 65%, rgb(0, 0, 0, .7) 25%),
-        linear-gradient(to top, rgb(0, 0, 0, .7) 25%, transparent 65%, rgb(0, 0, 0, .7) 25%);
+        -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0, .8) 25%, transparent 65%, rgb(0, 0, 0, .8) 25%),
+            linear-gradient(to top, rgb(0, 0, 0, .8) 25%, transparent 65%, rgb(0, 0, 0, .8) 25%);
         -webkit-mask-position: 0px -30px;
 
+        // -webkit-mask-image: radial-gradient(270px 400px, transparent 50%, rgb(0, 0, 0) 50%);
 
         .frame {
             position: absolute;
@@ -19,9 +23,15 @@
         }
 
         .outer-circle {
+            height: 60px;
+            width: 60px;
             padding: .25rem;
             border-radius: 50%;
             border: 3px solid white;
+
+            .circle-icon {
+                font-size: 60px;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.scss";
 import { CaptureImage } from './CaptureImage';
 import Camera from '@mui/icons-material/Camera';
@@ -9,11 +9,12 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { CropImage } from "./CropImage";
 
-
-export const Content = ({ heading, description, capturedImg, setCapturedImg, handleCamera, cameraStatus, navigation }) => {
+export const Content = ({ heading, description, capturedImg, handleImage, handleCamera, cameraStatus, navigation }) => {
 
     const theme = useTheme();
+    const [showCrop, setShowCrop] = useState(false);
 
     return (
         <Box padding={"0 1rem"} marginBottom={"1rem"} className="content-wrapper">
@@ -50,7 +51,7 @@ export const Content = ({ heading, description, capturedImg, setCapturedImg, han
                             </div>
                             :
                             <Stack className='pointer' flexDirection="column" alignItems="center">
-                                
+
                                 <Camera
                                     fontSize="large"
                                     onClick={() => handleCamera(true)}
@@ -77,7 +78,11 @@ export const Content = ({ heading, description, capturedImg, setCapturedImg, han
             </Link>
 
             {
-                cameraStatus && <CaptureImage handleCamera={handleCamera} setCapturedImg={setCapturedImg} />
+                cameraStatus && <CaptureImage handleCamera={handleCamera} handleImage={handleImage} setShowCrop={setShowCrop} />
+            }
+
+            {
+                showCrop && <CropImage capturedImg={capturedImg} setShowCrop={setShowCrop} handleImage={handleImage} />
             }
         </Box>
     )
