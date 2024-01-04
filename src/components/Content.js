@@ -10,6 +10,7 @@ import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { CropImage } from "./CropImage";
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 
 export const Content = ({ heading, description, capturedImg, handleImage, handleCamera, cameraStatus, navigation }) => {
 
@@ -40,7 +41,7 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
                     alignItems="center"
                     bgcolor={theme.palette.grey.whiteShade}
                     width={"100%"}
-                    height={"200px"}
+                    height={"170px"}
                     color={theme.palette.blueGrey.blueGrey2}
                     marginBottom={"8px"}
                 >
@@ -62,8 +63,19 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
                             </Stack>
                     }
                 </Stack>
+                {
+                    capturedImg &&
+                    <Button
+                        variant="outlined"
+                        color="blueGrey"
+                        endIcon={<RotateLeftIcon />}
+                        onClick={() => handleCamera(true)}
+                    >
+                        Retake
+                    </Button>
+                }
 
-                <Typography variant="h6" align="center" color={theme.palette.secondary.main} fontWeight={600}>
+                <Typography variant="h6" align="center" marginTop={capturedImg ? "16px" : ""} color={theme.palette.secondary.main} fontWeight={600}>
                     {heading}
                 </Typography>
                 <Typography variant="body2" align="center" color={theme.palette.grey.variant3}>
@@ -82,7 +94,13 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
             }
 
             {
-                showCrop && <CropImage capturedImg={capturedImg} setShowCrop={setShowCrop} handleImage={handleImage} />
+                showCrop &&
+                <CropImage
+                    capturedImg={capturedImg}
+                    handleCamera={handleCamera}
+                    setShowCrop={setShowCrop}
+                    handleImage={handleImage}
+                />
             }
         </Box>
     )

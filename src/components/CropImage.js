@@ -1,21 +1,22 @@
 import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
+import CachedIcon from '@mui/icons-material/Cached';
 import { useTheme } from "@mui/material/styles";
 import '../App.scss';
 import ReactCrop, { centerCrop, convertToPixelCrop } from 'react-image-crop';
 import 'react-image-crop/src/ReactCrop.scss';
 import setCanvasPreview from "./previewCanvas";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-export const CropImage = ({ capturedImg, setShowCrop, handleImage }) => {
+
+export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera }) => {
 
     const theme = useTheme();
     const [crop, setCrop] = useState({
         unit: "%",
         width: 95,
-        // height: 43
-        height: 30
+        height: 40
     });
     const imageRef = useRef(null);
     const previewCanvasRef = useRef(null);
@@ -40,8 +41,33 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage }) => {
             flexDirection="column"
             justifyContent="center"
         >
+
+            <Box
+                className="pointer"
+                height="30px"
+                width="45px"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                borderRadius="50px"
+                bgcolor={theme.palette.grey.whiteShade}
+                position={"absolute"}
+                top={20}
+                left={20}
+                onClick={() => {
+                    setShowCrop(false);
+                    handleCamera(false);
+                    handleImage(null);
+                }}
+            >
+                <ChevronLeftIcon
+                    className="go-back-icon"
+                    htmlColor={theme.palette.blueGrey.main}
+                    fontSize="medium"
+                />
+            </Box>
+
             <ReactCrop
-                className="crop-component"
                 crop={crop}
                 keepSelection
                 onChange={(pixelCrop, percentCrop) => setCrop(percentCrop)}
@@ -56,16 +82,20 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage }) => {
 
             <Box
                 position="absolute"
-                bottom={"10%"}
+                bottom={"8%"}
                 display="flex"
                 justifyContent="space-around"
                 alignItems="center"
                 width="100%"
             >
-                <CancelIcon
+                <CachedIcon
                     className="icon pointer"
-                    htmlColor={theme.palette.danger.main}
-                    onClick={() => setShowCrop(false)}
+                    htmlColor={theme.palette.warning.main}
+                    onClick={() => {
+                        setShowCrop(false);
+                        handleImage(null);
+                        handleCamera(true);
+                    }}
                 />
                 <CheckCircleIcon
                     className="icon pointer"
@@ -86,6 +116,7 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage }) => {
                     }}
                 />
             </Box>
+
             {
                 crop &&
                 <canvas

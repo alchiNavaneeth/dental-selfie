@@ -3,10 +3,11 @@ import "../App.scss";
 import { Header } from '../components/Header';
 import { Pager } from '../components/Pager';
 import { Content } from '../components/Content';
+import { useImageData2 } from "../data/ImageData";
 
 export const SecondStep = () => {
 
-    const [capturedImg, setCapturedImg] = useState("");
+    const { capturedImage2, handleImage2 } = useImageData2();
     const [cameraStatus, setCameraStatus] = useState(false);
 
 
@@ -19,7 +20,8 @@ export const SecondStep = () => {
             <Header />
             <Pager number="2" />
             <Content
-                capturedImg={capturedImg}
+                capturedImg={capturedImage2}
+                handleImage={handleImage2}
                 handleCamera={handleCamera}
                 cameraStatus={cameraStatus}
                 navigation="/third"

@@ -1,27 +1,32 @@
 .capture-image-wrapper {
-    // background-color: rgba(0, 0, 0);
+    background-color: rgb(40, 40, 43);
+
+    .webcam {
+        position: absolute;
+        top: -5%;
+        left: 0;
+    }
 
     .frame-wrapper {
-        // background-color: rgba(0, 0, 0, .6);
         background-color: rgba(0, 0, 0);
         opacity: .5;
         mask-image: inherit;
         mask-position: inherit;
-        -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0, .8) 25%, transparent 65%, rgb(0, 0, 0, .8) 25%),
+        -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0, .8) 25%, transparent 60%, rgb(0, 0, 0, .8) 25%),
             linear-gradient(to top, rgb(0, 0, 0, .8) 25%, transparent 65%, rgb(0, 0, 0, .8) 25%);
         -webkit-mask-position: 0px -30px;
-
-        // -webkit-mask-image: radial-gradient(270px 400px, transparent 50%, rgb(0, 0, 0) 50%);
 
         .frame {
             position: absolute;
             top: 30%;
             border: 5px dashed #00FFA0;
-            height: 30.2%;
+            height: 25%;
             width: 97%;
             margin-bottom: 20px;
         }
+    }
 
+    .frame-content {
         .outer-circle {
             height: 60px;
             width: 60px;

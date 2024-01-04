@@ -6,18 +6,13 @@ import { Link } from 'react-router-dom';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
-import Camera from "react-html5-camera-photo";
 import 'react-html5-camera-photo/build/css/index.css';
+import { Test } from './components/Test';
 
 const App = () => {
 
   const theme = useTheme();
-
-  const [img, setImg] = useState(null);
-
-  const handleTakePhoto = (dataUri) => {
-    setImg(dataUri);
-  }
+  const [testOpen, setTestOpen] = useState(false);
 
   return (
 
@@ -26,7 +21,7 @@ const App = () => {
       <Stack
         alignItems="center"
         justifyContent="center"
-        // height="100%"
+        height="100%"
         padding={"0 2rem"}
       >
 
@@ -43,14 +38,12 @@ const App = () => {
         </Link>
       </Stack>
 
-      {/* <Camera
-        onTakePhoto={(dataUri) => { handleTakePhoto(dataUri); }}
-      /> */}
+      {/* <button onClick={() => setTestOpen(true)}>Test</button> */}
 
       {
-        img && 
-        <img src={img} alt="Taken Img" />
+        testOpen && <Test setTestOpen={setTestOpen} />
       }
+
     </Box>
   );
 }

@@ -9,6 +9,8 @@
 _demo/
 _reference/
 _notes/
+_test/
+ngrok
 
 # testing
 /coverage

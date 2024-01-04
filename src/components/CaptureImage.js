@@ -29,7 +29,7 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
             left={0}
             width="100%"
             height="100%"
-        // overflow="hidden"
+            overflow="hidden"
         >
             <Webcam
                 className="webcam"
@@ -47,9 +47,20 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
                 position="absolute"
                 top={0}
                 left={0}
+                height="100%"
+                width="100%"
+            >
+                <div className="frame"></div>
+            </Box>
+            
+            <Box
+                className="frame-content"
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
+                position="absolute"
+                top={0}
+                left={0}
                 height="100%"
                 width="100%"
             >
@@ -71,23 +82,22 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
                 >
                     <ChevronLeftIcon
                         className="go-back-icon"
-                        htmlColor={theme.palette.blueGrey.blueGrey2}
+                        htmlColor={theme.palette.blueGrey.main}
                         fontSize="medium"
                     />
                 </Box>
-                <Typography variant="h6" color="white" fontWeight={600} position="absolute" bottom={"32%"} >
+
+
+                <Typography variant="h6" color="white" fontWeight={600} position="absolute" bottom={"38%"}  >
                     Align your teeth inside the frame
                 </Typography>
-
-                <div className="frame"></div>
-
                 <Box
                     className="outer-circle pointer"
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
                     position="absolute"
-                    bottom={"16%"}
+                    bottom={"10%"}
                 >
                     <CircleIcon
                         className="circle-icon"
@@ -96,10 +106,11 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
                     />
                 </Box>
 
-                <Typography variant="h6" color="white" fontWeight={600} fontSize={16} position="absolute" bottom={"12%"} >
+                <Typography color="white" fontWeight={600} fontSize={16} position="absolute" bottom={"6%"} >
                     Capture
                 </Typography>
             </Box>
+
         </Box>
     )
 } 
