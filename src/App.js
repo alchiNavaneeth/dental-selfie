@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import 'react-html5-camera-photo/build/css/index.css';
-import { Test } from './components/Test';
 
 const App = () => {
 
   const theme = useTheme();
-  const [testOpen, setTestOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
 
@@ -33,16 +32,8 @@ const App = () => {
           Our AI will analyse the photos and give you a health rating based on the result.
         </Typography>
 
-        <Link to={"/first"} className='router-link'>
-          <Button variant="contained" color='primary'>Get Started</Button>
-        </Link>
+        <Button variant="contained" color='primary' onClick={() => navigate("first")}>Get Started</Button>
       </Stack>
-
-      {/* <button onClick={() => setTestOpen(true)}>Test</button> */}
-
-      {
-        testOpen && <Test setTestOpen={setTestOpen} />
-      }
 
     </Box>
   );

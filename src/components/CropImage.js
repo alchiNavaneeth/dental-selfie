@@ -13,6 +13,8 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera }) => {
 
     const theme = useTheme();
+    const date = new Date();
+
     const [crop, setCrop] = useState({
         unit: "%",
         width: 95,
@@ -111,7 +113,8 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
                             ));
 
                         const dataUrl = previewCanvasRef.current.toDataURL();
-                        handleImage(dataUrl);
+                        console.log(dataUrl);
+                        handleImage(dataUrl, date.toUTCString());
                         setShowCrop(false);
                     }}
                 />

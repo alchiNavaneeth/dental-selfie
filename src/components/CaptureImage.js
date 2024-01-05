@@ -15,9 +15,11 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
 
     const handleCapture = useCallback(() => {
         const outputImg = webcamRef.current.getScreenshot();
-        handleImage(outputImg);
+        
+        handleImage(outputImg, null);
         setShowCrop(true);
         handleCamera(false);
+    
     }, [webcamRef, handleImage, handleCamera, setShowCrop]);
 
     return (
@@ -110,6 +112,7 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
                     Capture
                 </Typography>
             </Box>
+
 
         </Box>
     )

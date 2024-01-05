@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.scss";
 import { CaptureImage } from './CaptureImage';
 import Camera from '@mui/icons-material/Camera';
@@ -8,14 +8,29 @@ import Button from "@mui/material/Button";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CropImage } from "./CropImage";
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 
 export const Content = ({ heading, description, capturedImg, handleImage, handleCamera, cameraStatus, navigation }) => {
 
     const theme = useTheme();
+    const navigate = useNavigate();
     const [showCrop, setShowCrop] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        if (capturedImg) setError(null);
+    }, [capturedImg, setError]);
+
+    const handleNavigation = () => {
+        if (!capturedImg) {
+            setError("Please upload image first");
+            return;
+        }
+        navigate(navigation);
+        setError(null);
+    }
 
     return (
         <Box padding={"0 1rem"} marginBottom={"1rem"} className="content-wrapper">
@@ -75,6 +90,10 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
                     </Button>
                 }
 
+                <Typography align="center" marginBottom={ error ? "16px" : "" } fontSize="12px" color={theme.palette.danger.main} fontWeight={600}>
+                    {error}
+                </Typography>
+
                 <Typography variant="h6" align="center" marginTop={capturedImg ? "16px" : ""} color={theme.palette.secondary.main} fontWeight={600}>
                     {heading}
                 </Typography>
@@ -83,11 +102,9 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
                 </Typography>
             </Box>
 
-            <Link to={navigation} className="router-link">
-                <Button variant="contained" color="primary" fullWidth endIcon={<NavigateNextIcon />}>
-                    Next
-                </Button>
-            </Link>
+            <Button variant="contained" color="primary" fullWidth endIcon={<NavigateNextIcon />} onClick={handleNavigation} >
+                Next
+            </Button>
 
             {
                 cameraStatus && <CaptureImage handleCamera={handleCamera} handleImage={handleImage} setShowCrop={setShowCrop} />
@@ -102,6 +119,7 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
                     handleImage={handleImage}
                 />
             }
+
         </Box>
     )
 }
