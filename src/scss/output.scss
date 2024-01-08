@@ -1,11 +1,19 @@
 .output-wrapper {
-    .captured-output {
-        border-radius: 15px;
-        overflow: hidden;
+    // .captured-output {
+    //     border-radius: 15px;
+    //     overflow: hidden;
+    // }
 
-        img {
+    .nav-image {
+        div {
             width: 100%;
-            height: 100%;
+            height: 170px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
         }
     }
 }

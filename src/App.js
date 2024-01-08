@@ -15,7 +15,7 @@ const App = () => {
 
   return (
 
-    <Box className="App" height="100vh">
+    <Box className="App" height="90vh">
 
       <Stack
         alignItems="center"

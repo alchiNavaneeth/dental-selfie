@@ -108,9 +108,9 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
                     />
                 </Box>
 
-                <Typography color="white" fontWeight={600} fontSize={16} position="absolute" bottom={"6%"} >
+                {/* <Typography color="white" fontWeight={600} fontSize={16} position="absolute" bottom={"6%"} >
                     Capture
-                </Typography>
+                </Typography> */}
             </Box>
 
 

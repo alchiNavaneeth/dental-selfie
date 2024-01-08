@@ -11,6 +11,7 @@ _reference/
 _notes/
 _test/
 ngrok
+**/test*
 
 # testing
 /coverage
