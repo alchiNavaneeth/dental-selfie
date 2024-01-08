@@ -71,7 +71,7 @@ export const Output = () => {
                 </Stack>
 
                 {
-                    date2 && <Box marginTop="6px" marginBottom="20px" fontSize="14px" color={theme.palette.blueGrey.blueGrey2} textAlign="center">{date1}</Box>
+                    date2 && <Box marginTop="6px" marginBottom="20px" fontSize="14px" color={theme.palette.blueGrey.blueGrey2} textAlign="center">{date2}</Box>
                 }
                 <Stack
                     className="captured-output"
@@ -94,7 +94,7 @@ export const Output = () => {
                 </Stack>
 
                 {
-                    date3 && <Box marginTop="6px" marginBottom="20px" fontSize="14px" color={theme.palette.blueGrey.blueGrey2} textAlign="center">{date1}</Box>
+                    date3 && <Box marginTop="6px" marginBottom="20px" fontSize="14px" color={theme.palette.blueGrey.blueGrey2} textAlign="center">{date3}</Box>
                 }
 
                 <Button variant="outlined" fullWidth endIcon={<RestartAltIcon />} onClick={resetAll} >Reset all</Button>

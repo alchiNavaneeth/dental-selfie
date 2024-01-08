@@ -8,12 +8,12 @@ import ReactCrop, { centerCrop, convertToPixelCrop } from 'react-image-crop';
 import 'react-image-crop/src/ReactCrop.scss';
 import setCanvasPreview from "./previewCanvas";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import moment from "moment";
 
 
 export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera }) => {
 
     const theme = useTheme();
-    const date = new Date();
 
     const [crop, setCrop] = useState({
         unit: "%",
@@ -28,6 +28,11 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
 
         const centeredCrop = centerCrop(crop, width, height);
         setCrop(centeredCrop);
+    }
+
+    const handleGetDate = () => {
+        let currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+        return currentDate;
     }
 
     return (
@@ -95,7 +100,7 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
                     htmlColor={theme.palette.warning.main}
                     onClick={() => {
                         setShowCrop(false);
-                        handleImage(null);
+                        handleImage(null, null);
                         handleCamera(true);
                     }}
                 />
@@ -113,8 +118,7 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
                             ));
 
                         const dataUrl = previewCanvasRef.current.toDataURL();
-                        console.log(dataUrl);
-                        handleImage(dataUrl, date.toUTCString());
+                        handleImage(dataUrl, handleGetDate());
                         setShowCrop(false);
                     }}
                 />
