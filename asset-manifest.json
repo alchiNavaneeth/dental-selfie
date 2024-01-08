@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dental-selfie/static/css/main.74ba4be3.css",
+    "main.js": "/dental-selfie/static/js/main.18f387c9.js",
+    "static/js/787.776f64fc.chunk.js": "/dental-selfie/static/js/787.776f64fc.chunk.js",
+    "index.html": "/dental-selfie/index.html",
+    "main.74ba4be3.css.map": "/dental-selfie/static/css/main.74ba4be3.css.map",
+    "main.18f387c9.js.map": "/dental-selfie/static/js/main.18f387c9.js.map",
+    "787.776f64fc.chunk.js.map": "/dental-selfie/static/js/787.776f64fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.74ba4be3.css",
+    "static/js/main.18f387c9.js"
+  ]
+}
