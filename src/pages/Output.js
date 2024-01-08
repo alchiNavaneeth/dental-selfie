@@ -6,13 +6,10 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { useTheme } from "@mui/material/styles";
-import { useImageData1, useImageData2, useImageData3 } from "../data/ImageData";
+import { useImageData1, useImageData2, useImageData3, useNameData } from "../data/ImageData";
 import Typography from '@mui/material/Typography';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-// import test1 from "../assets/test1.jpg";
-// import test2 from "../assets/test2.png";
-// import test3 from "../assets/test3.jpg";
 
 
 export const Output = () => {
@@ -22,6 +19,7 @@ export const Output = () => {
     const { capturedImage1, date1 } = useImageData1();
     const { capturedImage2, date2 } = useImageData2();
     const { capturedImage3, date3 } = useImageData3();
+    const { username } = useNameData();
 
     const steps = [
         {
@@ -76,7 +74,7 @@ export const Output = () => {
                         Your Results
                     </Typography>
                     <Typography variant="body2" align="center" color={theme.palette.grey.variant2} fontWeight={600} marginBottom="20px" >
-                        Hi John. We analyzed your images. Here are the results:
+                        Hi {username}. We analyzed your images. Here are the results:
                     </Typography>
                     <Typography variant="body1" align="center" color={theme.palette.secondary.main} fontWeight={500} marginBottom="32px" >
                         You are showing some signs of gum disease. No signs of dental decay. You can scroll through your images.

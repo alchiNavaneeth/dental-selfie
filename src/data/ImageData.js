@@ -1,5 +1,15 @@
 import { useState } from "react";
 
+export const useNameData = () => {
+    const [username, setUsername] = useState(JSON.parse(sessionStorage.getItem("username")));
+    
+    const handleUsername = (name) => {
+        setUsername(name);
+        sessionStorage.setItem("username", JSON.stringify(name));
+    }
+
+    return { username, handleUsername };
+}
 
 export const useImageData1 = () => {
     const [capturedImage1, setCapturedImage1] = useState(JSON.parse(sessionStorage.getItem("image1")));
@@ -12,7 +22,7 @@ export const useImageData1 = () => {
         sessionStorage.setItem("date1", JSON.stringify(date));
     }
 
-    return { capturedImage1, date1, handleImage1 }
+    return { capturedImage1, date1, handleImage1 };
 }
 
 export const useImageData2 = () => {
@@ -26,7 +36,7 @@ export const useImageData2 = () => {
         sessionStorage.setItem("date2", JSON.stringify(date));
     }
 
-    return { capturedImage2, date2, handleImage2 }
+    return { capturedImage2, date2, handleImage2 };
 }
 
 export const useImageData3 = () => {
@@ -40,6 +50,6 @@ export const useImageData3 = () => {
         sessionStorage.setItem("date3", JSON.stringify(date));
     }
 
-    return { capturedImage3, date3, handleImage3 }
+    return { capturedImage3, date3, handleImage3 };
 }
 
