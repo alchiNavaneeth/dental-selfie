@@ -52,7 +52,7 @@ const App = () => {
 
         <form style={{ width: "100%" }} >
           <label htmlFor="username">Enter your name</label>
-          <input type="text" id='username' placeholder='username' value={username ? username : ""} onChange={handleUsernameChange} required />
+          <input type="text" id='username' placeholder='username' value={username ? username : name} onChange={handleUsernameChange} required />
           {error && <p>{error}</p>}
           <Button className='submit-btn' variant="contained" fullWidth color='primary' onClick={handleStart}>Get Started</Button>
         </form>
