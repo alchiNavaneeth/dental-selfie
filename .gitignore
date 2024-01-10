@@ -12,6 +12,7 @@ _notes/
 _test/
 ngrok
 **/test*
+.vscode/
 
 # testing
 /coverage

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../App.scss";
+import { useNavigate } from "react-router-dom";
 import { Header } from '../components/Header';
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -14,8 +15,9 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export const Output = () => {
     const theme = useTheme();
-    const [activeStep, setActiveStep] = useState(0);
+    const navigate = useNavigate();
 
+    const [activeStep, setActiveStep] = useState(0);
     const { capturedImage1, date1 } = useImageData1();
     const { capturedImage2, date2 } = useImageData2();
     const { capturedImage3, date3 } = useImageData3();
@@ -24,12 +26,12 @@ export const Output = () => {
     const steps = [
         {
             label: "Right side - oral prediction",
-            imgPath: capturedImage1,
+            imgPath: capturedImage2,
             date: date2
         },
         {
             label: "Front side - oral prediction",
-            imgPath: capturedImage2,
+            imgPath: capturedImage1,
             date: date1
         },
         {
@@ -41,11 +43,12 @@ export const Output = () => {
 
     const resetAll = () => {
         sessionStorage.clear();
-        window.location.replace("/");
+        navigate("/");
     }
 
     const handlePrev = () => {
         if (activeStep <= 0) {
+            setActiveStep(steps.length - 1);
             return
         }
         setActiveStep(prevActiveStep => prevActiveStep - 1);
@@ -53,6 +56,7 @@ export const Output = () => {
 
     const handleNext = () => {
         if (activeStep >= steps.length - 1) {
+            setActiveStep(0);
             return
         }
         setActiveStep(nextActiveStep => nextActiveStep + 1);
@@ -127,81 +131,6 @@ export const Output = () => {
                         Captured on { steps[activeStep].date }
                     </Typography>
                 </Stack>
-
-
-
-
-                {/*                 
-                <Stack
-                    className="captured-output"
-                    justifyContent="center"
-                    alignItems="center"
-                    bgcolor={theme.palette.grey.whiteShade}
-                    width={"100%"}
-                    height={"170px"}
-                    color={theme.palette.blueGrey.blueGrey2}
-                    marginBottom={date1 ? "" : "32px"}
-                >
-                    {
-                        capturedImage1 ?
-                            <div>
-                                <img src={capturedImage1} alt="Captured Img" className="captured-image" />
-                            </div>
-                            :
-                            <div>No Image Found</div>
-                    }
-                </Stack>
-
-                {
-                    date1 && <Box marginTop="6px" marginBottom="20px" fontSize="14px" color={theme.palette.blueGrey.blueGrey2} textAlign="center">{date1}</Box>
-                }
-
-                <Stack
-                    className="captured-output"
-                    justifyContent="center"
-                    alignItems="center"
-                    bgcolor={theme.palette.grey.whiteShade}
-                    width={"100%"}
-                    height={"170px"}
-                    color={theme.palette.blueGrey.blueGrey2}
-                    marginBottom={date2 ? "" : "32px"}
-                >
-                    {
-                        capturedImage2 ?
-                            <div>
-                                <img src={capturedImage2} alt="Captured Img" className="captured-image" />
-                            </div>
-                            :
-                            <div>No Image Found</div>
-                    }
-                </Stack>
-
-                {
-                    date2 && <Box marginTop="6px" marginBottom="20px" fontSize="14px" color={theme.palette.blueGrey.blueGrey2} textAlign="center">{date2}</Box>
-                }
-                <Stack
-                    className="captured-output"
-                    justifyContent="center"
-                    alignItems="center"
-                    bgcolor={theme.palette.grey.whiteShade}
-                    width={"100%"}
-                    height={"170px"}
-                    color={theme.palette.blueGrey.blueGrey2}
-                    marginBottom={date3 ? "" : "32px"}
-                >
-                    {
-                        capturedImage3 ?
-                            <div>
-                                <img src={capturedImage3} alt="Captured Img" className="captured-image" />
-                            </div>
-                            :
-                            <div>No Image Found</div>
-                    }
-                </Stack>
-
-                {
-                    date3 && <Box marginTop="6px" marginBottom="20px" fontSize="14px" color={theme.palette.blueGrey.blueGrey2} textAlign="center">{date3}</Box>
-                } */}
 
                 <Button variant="outlined" fullWidth endIcon={<RestartAltIcon />} onClick={resetAll} >Reset all</Button>
             </Box>

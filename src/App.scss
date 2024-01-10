@@ -1,39 +1,5 @@
 @import "./scss/all";
 
-form {
-  width: 100%;
-
-  label {
-    font-size: 14px;
-    display: block;
-    color: #555;
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-
-  input {
-    padding: .5rem 1rem;
-    outline: none;
-    border: 1px solid grey;
-    width: 90%;
-    margin-bottom: 4px;
-  }
-
-  p {
-    color: red;
-    font-size: 12px;
-  }
-
-  .submit-btn {
-    margin-top: 20px;
-  }
-
-}
-
-.router-link {
-  text-decoration: none;
-}
-
 .hidden {
   display: none !important;
 }

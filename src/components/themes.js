@@ -19,18 +19,21 @@ export const theme = createTheme({
             main: orange[500],
         },
         grey: {
-            whiteShade: grey[100],
-            variant1: grey[300],
-            variant2: grey[400],
+            light: grey[300],
             main: grey[500],
-            variant3: grey[600],
-            variant4: grey[700],
-            dark: grey[800],
+            medium: grey[700],
+            dark: grey[900],
         },
         blueGrey: {
+            light: blueGrey[300],
             main: blueGrey[500],
-            blueGrey1: blueGrey[600],
-            blueGrey2: blueGrey[700],
+            medium: blueGrey[700],
+            dark: blueGrey[800],
+        },
+        white: {
+            main: "#ffffff",
+            light: grey[100],
+            dark: grey[200]
         }
     },
 });
