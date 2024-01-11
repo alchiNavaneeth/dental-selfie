@@ -1,9 +1,16 @@
 .content-wrapper {
     .content {
         .captured-output {
-            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='15' ry='15' stroke='%23455A64FF' stroke-width='6' stroke-dasharray='20%25 13%25' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e");
-            border-radius: 15px;
             overflow: hidden;
+            opacity: .5;
+
+            .camera-icon {
+                font-size: 60px;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
 
             img {
                 width: 100%;

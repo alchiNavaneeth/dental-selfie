@@ -42,7 +42,6 @@ const App = () => {
     <Box height="100vh" width="100%">
       <Header />
       <Box
-        className="desktop-wrapper"
         display="flex"
         flexDirection={breakpointCheck ? "row" : "column"}
         justifyContent="space-around"
@@ -52,11 +51,11 @@ const App = () => {
         height="88%"
         padding={"20px"}
       >
-        <Box className="left" width={ breakpointCheck ? "30%" : "100%"} order={ breakpointCheck ? 1 : 2} >
-          <Typography variant={ breakpointCheck ? 'h2' : 'h4' } color={theme.palette.blueGrey.dark}>
+        <Box width={ breakpointCheck ? "40%" : "100%"} order={ breakpointCheck ? 1 : 2}>
+          <Typography variant={ breakpointCheck ? 'h2' : 'h4' } fontWeight={600} color={theme.palette.dark.main} gutterBottom>
             Dental AI Observation
           </Typography>
-          <Typography variant={ breakpointCheck ? 'h6' : 'body2'} color={theme.palette.blueGrey.main} marginBottom={ breakpointCheck ? "60px" : "30px"}>
+          <Typography variant={ breakpointCheck ? 'h6' : 'body2'} color={theme.palette.text.main} marginBottom={ breakpointCheck ? "60px" : "30px"}>
             Our AI will analyse the photos and give you a health rating based on the results
           </Typography>
 
@@ -65,7 +64,8 @@ const App = () => {
           >
             <div>
               <TextField
-                InputProps={{ sx: { borderRadius: "50px", padding: "0px 20px" } }}
+                InputProps={{ sx: { borderRadius: "50px", padding: "0px 1rem" } }}
+                InputLabelProps={{sx: { paddingLeft: "1rem" }}}
                 fullWidth
                 error={error ? true : false}
                 id="outlined-error-helper-text"
@@ -77,13 +77,14 @@ const App = () => {
             </div>
           </Box>
           <Stack
+            className="pointer"
             marginTop="20px"
-            padding=".7rem 1rem"
+            padding="1rem 2rem"
             direction="row"
             justifyContent="space-between"
             alignItems="center"
             borderRadius="50px"
-            color={theme.palette.white.main}
+            color="white"
             bgcolor={theme.palette.primary.main}
             onClick={handleStart}
           >
@@ -92,8 +93,8 @@ const App = () => {
           </Stack>
         </Box>
 
-        <Box className='right' order={ breakpointCheck ? 2 : 1}>
-          <img width="100%" height={breakpointCheck ? "650px" : "400px"} src={HomeVector} alt="Home Vector" />
+        <Box order={ breakpointCheck ? 2 : 1}>
+          <img width="100%" height={breakpointCheck ? "650px" : "300px"} src={HomeVector} alt="Home Vector" />
         </Box>
       </Box>
 
