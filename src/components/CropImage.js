@@ -1,24 +1,38 @@
 import React, { useRef, useState } from "react";
-import Box from "@mui/material/Box";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CachedIcon from '@mui/icons-material/Cached';
-import { useTheme } from "@mui/material/styles";
 import '../App.scss';
-import ReactCrop, { centerCrop, convertToPixelCrop } from 'react-image-crop';
-import 'react-image-crop/src/ReactCrop.scss';
 import setCanvasPreview from "./previewCanvas";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import moment from "moment";
+
+import {
+    Box,
+    useTheme,
+    Button,
+    Typography,
+    useMediaQuery
+} from "@mui/material";
+
+import ReactCrop, {
+    centerCrop,
+    convertToPixelCrop
+} from 'react-image-crop';
+import 'react-image-crop/src/ReactCrop.scss';
+
+import {
+    Close,
+    Check,
+    RotateLeft
+} from '@mui/icons-material';
 
 
 export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera }) => {
 
     const theme = useTheme();
+    const breakpointCheck = useMediaQuery(theme.breakpoints.up("md"));
 
     const [crop, setCrop] = useState({
         unit: "%",
-        width: 95,
-        height: 40
+        width: breakpointCheck ? 55 : 95,
+        height: breakpointCheck ? 35 : 40
     });
     const imageRef = useRef(null);
     const previewCanvasRef = useRef(null);
@@ -41,72 +55,95 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
             position="absolute"
             top={0}
             left={0}
-            width="100%"
-            height="100%"
+            width="100vw"
+            height="100vh"
             overflow="hidden"
             display="flex"
             flexDirection="column"
             justifyContent="center"
         >
-
-            <Box
-                className="pointer"
-                height="30px"
-                width="45px"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                borderRadius="50px"
-                bgcolor={theme.palette.grey.whiteShade}
-                position={"absolute"}
-                top={20}
-                left={20}
+            <Close
+                className={`pointer ${breakpointCheck ? "close-icon-desk" : "close-icon-mob"}`}
+                htmlColor="white"
+                fontSize="large"
                 onClick={() => {
                     setShowCrop(false);
                     handleCamera(false);
-                    handleImage(null);
+                    handleImage(null, null);
                 }}
-            >
-                <ChevronLeftIcon
-                    className="go-back-icon"
-                    htmlColor={theme.palette.blueGrey.main}
-                    fontSize="medium"
-                />
-            </Box>
+            />
 
-            <ReactCrop
-                crop={crop}
-                keepSelection
-                onChange={(pixelCrop, percentCrop) => setCrop(percentCrop)}
+            <Box
+                className="crop-box"
+                width="100%"
+                height={breakpointCheck ? "100%" : "90%"}
+                position="absolute"
+                top={0}
+                left={0}
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
             >
-                <img
-                    ref={imageRef}
-                    src={capturedImg}
-                    onLoad={onImageLoaded}
-                    alt="Img"
-                />
-            </ReactCrop>
+                <ReactCrop
+                    crop={crop}
+                    keepSelection
+                    onDragEnd={(e) => {
+                        console.log(e.target.clientWidth, e.target.clientHeight)
+                    }}
+                    renderSelectionAddon={() => {
+                        return (
+                            <Box display="flex" justifyContent="center" position="absolute" width="100%" top="100%">
+                                <Typography variant={breakpointCheck ? "h5" : "body1"} align="center" color={"white"}>
+                                    Crop and Resize if needed
+                                </Typography>
+                            </Box>
+                        )
+                    }}
+                    onChange={(pixelCrop, percentCrop) => setCrop(percentCrop)}
+                >
+                    <img
+                        ref={imageRef}
+                        src={capturedImg}
+                        onLoad={onImageLoaded}
+                        alt="Img"
+                    />
+                </ReactCrop>
+            </Box>
 
             <Box
                 position="absolute"
-                bottom={"8%"}
+                bottom={"10%"}
                 display="flex"
                 justifyContent="space-around"
                 alignItems="center"
                 width="100%"
             >
-                <CachedIcon
-                    className="icon pointer"
-                    htmlColor={theme.palette.warning.main}
+                <Button
+                    sx={{
+                        width: breakpointCheck ? "10%" : "auto",
+                        borderRadius: "50px",
+                    }}
+                    variant="contained"
+                    size="large"
+                    endIcon={<RotateLeft />}
                     onClick={() => {
                         setShowCrop(false);
                         handleImage(null, null);
                         handleCamera(true);
                     }}
-                />
-                <CheckCircleIcon
-                    className="icon pointer"
-                    htmlColor={theme.palette.success.main}
+                >
+                    Retake
+                </Button>
+                <Button
+                    sx={{
+                        width: breakpointCheck ? "10%" : "auto",
+                        borderRadius: "50px",
+                    }}
+                    className="retake-btn"
+                    variant="contained"
+                    size="large"
+                    endIcon={<Check />}
                     onClick={() => {
                         setCanvasPreview(
                             imageRef.current,
@@ -121,7 +158,9 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
                         handleImage(dataUrl, handleGetDate());
                         setShowCrop(false);
                     }}
-                />
+                >
+                    Done
+                </Button>
             </Box>
 
             {

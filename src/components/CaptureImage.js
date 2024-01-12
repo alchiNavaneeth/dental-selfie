@@ -1,25 +1,37 @@
-import React, { useCallback, useRef } from "react";
+import React, {
+    useCallback,
+    useRef
+} from "react";
+
 import '../App.scss';
 import Webcam from "react-webcam";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material/styles";
-import CircleIcon from '@mui/icons-material/Circle';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
+import {
+    Box,
+    Typography,
+    useTheme,
+    useMediaQuery,
+} from "@mui/material";
+
+import {
+    Circle,
+    Close
+} from '@mui/icons-material';
 
 
 export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
 
     const theme = useTheme();
     const webcamRef = useRef(null);
+    const breakpointCheck = useMediaQuery(theme.breakpoints.up("md"));
 
     const handleCapture = useCallback(() => {
         const outputImg = webcamRef.current.getScreenshot();
-        
+
         handleImage(outputImg, null);
         setShowCrop(true);
         handleCamera(false);
-    
+
     }, [webcamRef, handleImage, handleCamera, setShowCrop]);
 
     return (
@@ -32,29 +44,38 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
             width="100%"
             height="100%"
             overflow="hidden"
+            paddingTop="10px"
         >
             <Webcam
                 className="webcam"
                 ref={webcamRef}
                 screenshotFormat="image/png"
                 screenshotQuality={1}
-                facingMode="user"
+                // facingMode="user"
                 width="100%"
                 height="100%"
                 mirrored={true}
             />
 
             <Box
-                className="frame-wrapper"
+                className={breakpointCheck ? "desk-frame-wrapper" : "mob-frame-wrapper"}
                 position="absolute"
                 top={0}
                 left={0}
                 height="100%"
                 width="100%"
             >
-                <div className="frame"></div>
+                <Box
+                    className="frame"
+                    position="absolute"
+                    top={breakpointCheck ? "25%" : "30%"}
+                    border={`5px dashed ${theme.palette.primary.main}`}
+                    left={breakpointCheck ? "17.5%" : ""}
+                    width={breakpointCheck ? "65%" : "100%"}
+                    height={breakpointCheck ? "40%" : "26.5%"}
+                ></Box>
             </Box>
-            
+
             <Box
                 className="frame-content"
                 display="flex"
@@ -66,31 +87,20 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
                 height="100%"
                 width="100%"
             >
-                <Box
-                    className="pointer"
-                    height="30px"
-                    width="45px"
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    borderRadius="50px"
-                    bgcolor={theme.palette.grey.whiteShade}
-                    position={"absolute"}
-                    top={20}
-                    left={20}
-                    onClick={() => {
-                        handleCamera(false);
-                    }}
+                <Close
+                    className={`pointer ${breakpointCheck ? "close-icon-desk" : "close-icon-mob"}`}
+                    htmlColor="white"
+                    fontSize="large"
+                    onClick={() => handleCamera(false)}
+                />
+
+                <Typography
+                    variant={breakpointCheck ? "h5" : "h6"}
+                    color={theme.palette.primary.main}
+                    fontWeight={600}
+                    position="absolute"
+                    bottom={breakpointCheck ? "30%" : "38%"}
                 >
-                    <ChevronLeftIcon
-                        className="go-back-icon"
-                        htmlColor={theme.palette.blueGrey.main}
-                        fontSize="medium"
-                    />
-                </Box>
-
-
-                <Typography variant="h6" color="white" fontWeight={600} position="absolute" bottom={"38%"}  >
                     Align your teeth inside the frame
                 </Typography>
                 <Box
@@ -101,19 +111,15 @@ export const CaptureImage = ({ handleCamera, handleImage, setShowCrop }) => {
                     position="absolute"
                     bottom={"10%"}
                 >
-                    <CircleIcon
+                    <Circle
                         className="circle-icon"
-                        htmlColor={theme.palette.grey.whiteShade}
+                        htmlColor="white"
                         onClick={handleCapture}
                     />
                 </Box>
-
-                {/* <Typography color="white" fontWeight={600} fontSize={16} position="absolute" bottom={"6%"} >
-                    Capture
-                </Typography> */}
             </Box>
 
 
-        </Box>
+        </Box >
     )
 } 

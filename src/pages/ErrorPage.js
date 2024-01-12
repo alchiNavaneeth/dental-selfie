@@ -13,15 +13,15 @@ export const ErrorPage = () => {
         <Box
             margin={"3rem 0"}
         >
-             <Typography variant="h3" align="center" color={theme.palette.blueGrey.blueGrey1} fontWeight={600} marginBottom={"6px"}>
+             <Typography variant="h3" align="center" color={theme.palette.blueGrey.medium} fontWeight={600} marginBottom={"6px"}>
                 Oops!
             </Typography>
 
-            <Typography variant="body2" align="center" color={theme.palette.grey.variant3} marginBottom={"16px"} >
+            <Typography variant="body2" align="center" color={theme.palette.grey.dark} marginBottom={"16px"} >
                 Sorry, an unexpected error has occurred.
             </Typography>
 
-            <Typography variant="body2" align="center" color={theme.palette.blueGrey.blueGrey2} >
+            <Typography variant="body2" align="center" color={theme.palette.blueGrey.medium} >
                 <i>{error.statusText || error.message}</i>
             </Typography>
         </Box>

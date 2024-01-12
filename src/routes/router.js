@@ -16,18 +16,22 @@ const router = createHashRouter([
     {
         path: "/first",
         element: <FirstStep />,
+        errorElement: <ErrorPage />
     },
     {
         path: "/second",
         element: <SecondStep />,
+        errorElement: <ErrorPage />
     },
     {
         path: "/third",
         element: <ThirdStep />,
+        errorElement: <ErrorPage />
     },
     {
         path: "/output",
         element: <Output />,
+        errorElement: <ErrorPage />
     }
 ]);
 export default router;

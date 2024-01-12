@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../App.scss";
 import { Header } from '../components/Header';
 import { Pager } from '../components/Pager';
+import { GoBack } from "../components/GoBack";
 import { Content } from '../components/Content';
 import { useImageData3 } from "../data/ImageData";
 
@@ -18,6 +19,7 @@ export const ThirdStep = () => {
     return (
         <div>
             <Header />
+            <GoBack />
             <Pager number="3" />
             <Content
                 capturedImg={capturedImage3}

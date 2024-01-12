@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../App.scss";
+
 import { Header } from '../components/Header';
 import { Pager } from '../components/Pager';
+import { GoBack } from "../components/GoBack";
 import { Content } from '../components/Content';
 import { useImageData1 } from "../data/ImageData";
 
@@ -10,7 +12,6 @@ export const FirstStep = () => {
     const { capturedImage1, handleImage1 } = useImageData1();
     const [cameraStatus, setCameraStatus] = useState(false);
 
-
     const handleCamera = (status) => {
         setCameraStatus(status);
     }
@@ -18,6 +19,7 @@ export const FirstStep = () => {
     return (
         <div>
             <Header />
+            <GoBack />
             <Pager number="1" />
             <Content
                 capturedImg={capturedImage1}

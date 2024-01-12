@@ -16,6 +16,16 @@
                 width: 100%;
                 height: 100%;
             }
+
+            &.captured {
+                opacity: 1;
+            }
+
+            .captured-div {
+                position: relative;
+            }
+
+
         }
     }
 }

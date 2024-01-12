@@ -1,42 +1,59 @@
+@mixin frame-wrapper {
+    background-color: rgba(0, 0, 0);
+    opacity: .9;
+}
+
 .capture-image-wrapper {
     background-color: rgb(40, 40, 43);
 
     .webcam {
         position: absolute;
-        top: -5%;
-        left: 0;
+        top: 0;
     }
 
-    .frame-wrapper {
-        background-color: rgba(0, 0, 0);
-        opacity: .5;
+    .mob-frame-wrapper {
+        @include frame-wrapper();
         mask-image: inherit;
         mask-position: inherit;
         -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0, .8) 25%, transparent 60%, rgb(0, 0, 0, .8) 25%),
             linear-gradient(to top, rgb(0, 0, 0, .8) 25%, transparent 65%, rgb(0, 0, 0, .8) 25%);
         -webkit-mask-position: 0px -30px;
-
-        .frame {
-            position: absolute;
-            top: 30%;
-            border: 5px dashed #00FFA0;
-            height: 25%;
-            width: 97%;
-            margin-bottom: 20px;
-        }
     }
+
+    // .desk-frame-wrapper {
+    //     @include frame-wrapper();
+    //     mask-image: inherit;
+    //     mask-position: inherit;
+    //     -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0, .8) 20%, transparent 68%, rgb(0, 0, 0, .8) 20%),
+    //         linear-gradient(to top, rgb(0, 0, 0, .8) 20%, transparent 71%, rgb(0, 0, 0, .8) 20%);
+    //         // linear-gradient(to left, rgb(0, 0, 0, .8) 10%, transparent 82.5%, rgb(0, 0, 0, .8) 10%);
+    //         // linear-gradient(to right, rgb(0, 0, 0, .8) 10%, transparent 82.5%, rgb(0, 0, 0, .8) 10%),;
+    //     -webkit-mask-position: 0px -30px;
+    // }
 
     .frame-content {
         .outer-circle {
             height: 60px;
             width: 60px;
-            padding: .25rem;
+            padding: .5rem;
             border-radius: 50%;
             border: 3px solid white;
 
             .circle-icon {
-                font-size: 60px;
+                font-size: 50px;
             }
+        }
+
+        .close-icon-desk {
+            position: absolute;
+            top: 48px;
+            right: 48px;
+        }
+
+        .close-icon-mob {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
     }
 }

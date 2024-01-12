@@ -30,7 +30,7 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
 
     const [showCrop, setShowCrop] = useState(false);
 
-    
+
     return (
         <Box padding={"0 1rem"} marginBottom={".5rem"} className="content-wrapper">
 
@@ -50,20 +50,49 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
                 marginBottom={"20px"}
             >
                 <Stack
-                    className="captured-output"
+                    className={`captured-output ${capturedImg && "captured"}`}
                     border={`3px dashed ${theme.palette.text.main}`}
                     justifyContent="center"
                     alignItems="center"
                     bgcolor={theme.palette.background.light}
-                    width={breakpointCheck ? "60%" : "100%"}
-                    height={breakpointCheck ? "400px" : "170px"}
+                    width={breakpointCheck ? "800px" : "100%"}
+                    height={breakpointCheck ? "360px" : "170px"}
                     color={theme.palette.text.main}
                     marginBottom={"8px"}
                 >
                     {
                         capturedImg ?
-                            <div>
+                            <div className="captured-div">
                                 <img src={capturedImg} alt="Captured Img" className="captured-image" />
+                                <Box
+                                    position="absolute"
+                                    left={0}
+                                    top={0}
+                                    display="flex"
+                                    flexDirection="row"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    bgcolor="transparent"
+                                    width="100%"
+                                    height="100%"
+                                >
+                                    <Button
+                                        sx={{
+                                            width: breakpointCheck ? "20%" : "auto",
+                                            borderRadius: "50px",
+                                            backgroundColor: "rgba(146, 146, 146, 0.6)",
+                                            "&:hover": {
+                                                backgroundColor: "rgba(146, 146, 146, 0.9)",
+                                            }
+                                        }}
+                                        variant="contained"
+                                        size="large"
+                                        endIcon={<RotateLeft />}
+                                        onClick={() => handleCamera(true)}
+                                    >
+                                        Retake
+                                    </Button>
+                                </Box>
                             </div>
                             :
                             <Stack className='pointer' flexDirection="column" alignItems="center" onClick={() => handleCamera(true)}>
@@ -77,17 +106,6 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
                             </Stack>
                     }
                 </Stack>
-                {
-                    capturedImg &&
-                    <Button
-                        variant="outlined"
-                        color="blueGrey"
-                        endIcon={<RotateLeft />}
-                        onClick={() => handleCamera(true)}
-                    >
-                        Retake
-                    </Button>
-                }
             </Box>
 
             <Stack direction="row" justifyContent="center" width="100%">
@@ -118,6 +136,6 @@ export const Content = ({ heading, description, capturedImg, handleImage, handle
                 />
             }
 
-        </Box>
+        </Box >
     )
 }
