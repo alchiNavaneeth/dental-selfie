@@ -5,6 +5,7 @@ import { FirstStep } from '../pages/FirstStep';
 import { SecondStep } from '../pages/SecondStep';
 import { ThirdStep } from '../pages/ThirdStep';
 import { Output } from '../pages/Output';
+import { Report } from '../pages/Report';
 
 
 const router = createHashRouter([
@@ -31,6 +32,11 @@ const router = createHashRouter([
     {
         path: "/output",
         element: <Output />,
+        errorElement: <ErrorPage />
+    },
+    {
+        path: "/report",
+        element: <Report />,
         errorElement: <ErrorPage />
     }
 ]);

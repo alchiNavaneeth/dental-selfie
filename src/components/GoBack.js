@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 
 import {
     Stack,
@@ -23,7 +23,7 @@ export const GoBack = () => {
     return (
         <div>
             <Stack
-                display="flex"
+                direction="row"
                 justifyContent="center"
                 alignItems="center"
                 className="pointer"

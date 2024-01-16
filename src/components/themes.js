@@ -39,7 +39,7 @@ export const theme = createTheme({
         
         background: {
             main: "#FFFFFF",
-            light: "#F5F5F5"
+            light: "#F1F5FE"
         },
         
         dark: {
