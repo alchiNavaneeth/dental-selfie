@@ -15,8 +15,6 @@ import {
 } from "@mui/material";
 
 import {
-    CheckCircle,
-    Cancel,
     RestartAlt,
     KeyboardArrowLeft,
     KeyboardArrowRight,
@@ -108,15 +106,23 @@ export const Output = () => {
                     You are showing some signs of gum disease. No signs of dental decay.
                 </Typography>
 
-                <Stack direction="row" marginTop={5}>
-                    <CheckCircle htmlColor={theme.palette.success.main} />
-                    <Typography marginLeft={1} variant="body1" color={theme.palette.text.main} gutterBottom>
+                <Stack
+                    direction="row"
+                    alignItems="center"
+                    mt={4}
+                >
+                    <Box width="20px" height="20px" bgcolor={theme.palette.success.main} mr={1} ></Box>
+                    <Typography variant="body1" color={theme.palette.text.main}>
                         Gum Disease
                     </Typography>
                 </Stack>
-                <Stack direction="row" marginTop={1}>
-                    <Cancel htmlColor={theme.palette.warning.main} />
-                    <Typography marginLeft={1} variant="body1" color={theme.palette.text.main} gutterBottom>
+                <Stack
+                    direction="row"
+                    alignItems="center"
+                    mt={2}
+                >
+                    <Box width="20px" height="20px" bgcolor={theme.palette.warning.main} mr={1} ></Box>
+                    <Typography variant="body1" color={theme.palette.text.main}>
                         Dental Decay
                     </Typography>
                 </Stack>
@@ -131,6 +137,7 @@ export const Output = () => {
                     width="100%"
                 >
                     <Box
+                        className="pointer"
                         position="absolute"
                         left={10}
                         display="flex"
@@ -146,13 +153,15 @@ export const Output = () => {
                             }
                         }}
                         color="white"
+                        onClick={handlePrev}
                     >
-                        <KeyboardArrowLeft className="pointer" fontSize="medium" onClick={handlePrev} />
+                        <KeyboardArrowLeft fontSize="medium" />
                     </Box>
                     <Box overflow="hidden" width="100%">
-                        <img src={steps[activeStep].imgPath} alt="Captured" width="100%" height="100%" />
+                        <img src={steps[activeStep].imgPath} alt="Captured" style={{ borderRadius: "10px" }} width="100%" height="100%" />
                     </Box>
                     <Box
+                        className="pointer"
                         position="absolute"
                         right={10}
                         display="flex"
@@ -168,8 +177,9 @@ export const Output = () => {
                             }
                         }}
                         color="white"
+                        onClick={handleNext}
                     >
-                        <KeyboardArrowRight className="pointer" fontSize="medium" onClick={handleNext} />
+                        <KeyboardArrowRight fontSize="medium" />
                     </Box>
                 </Stack>
                 <Stack direction="row" justifyContent={breakpointCheck ? "flex-end" : "flex-start"} marginBlock={2} >
@@ -239,76 +249,6 @@ export const Output = () => {
                     <SummarizeOutlined />
                 </Stack>
             </Stack>
-
-            {/* 
-            <Box paddingInline="20px" paddingBottom="20px">
-
-                <Stack
-                    justifyContent="center"
-                    width={"100%"}
-                    marginBottom="32px"
-                    overflow="hidden"
-                >
-                    <Typography variant="h4" align="center" color={theme.palette.grey.dark} marginBottom="8px" >
-                        Your Results
-                    </Typography>
-                    <Typography variant="body2" align="center" color={theme.palette.grey.variant2} fontWeight={600} marginBottom="20px" >
-                        Hi {username}. We analyzed your images. Here are the results:
-                    </Typography>
-                    <Typography variant="body1" align="center" color={theme.palette.secondary.main} fontWeight={500} marginBottom="32px" >
-                        You are showing some signs of gum disease. No signs of dental decay. You can scroll through your images.
-                    </Typography>
-
-                    <Typography variant="caption" align="center" color={theme.palette.grey.variant3}>
-                        {steps[activeStep].label}
-                    </Typography>
-
-                    <Stack
-                        className="nav-image"
-                        flexDirection="row"
-                        justifyContent="space-between"
-                        alignItems="center"
-                        width="100%"
-                    >
-                        <KeyboardArrowLeftIcon className="pointer" fontSize="medium" htmlColor={theme.palette.blueGrey.blueGrey2} onClick={handlePrev} />
-                        <div>
-                            <img src={steps[activeStep].imgPath} alt="Captured" width="100%" />
-                        </div>
-                        <KeyboardArrowRightIcon className="pointer" fontSize="medium" htmlColor={theme.palette.blueGrey.blueGrey2} onClick={handleNext} />
-                    </Stack>
-                    <Box
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
-                        marginBottom="20px"
-                    >
-                        <Stack
-                            flexDirection="row"
-                            alignItems="center"
-                            marginRight="20px"
-                        >
-                            <Typography variant="caption" color={theme.palette.grey.variant3} marginRight="3px">
-                                Dental Decay
-                            </Typography>
-                            <Box width="10px" height="10px" bgcolor={theme.palette.success.main}></Box>
-                        </Stack>
-                        <Stack
-                            flexDirection="row"
-                            alignItems="center"
-                        >
-                            <Typography variant="caption" color={theme.palette.grey.variant3} marginRight="3px">
-                                Gum Disease
-                            </Typography>
-                            <Box width="10px" height="10px" bgcolor={theme.palette.warning.main}></Box>
-                        </Stack>
-                    </Box>
-                    <Typography variant="body2" color={theme.palette.grey.variant3} align="center">
-                        Captured on { steps[activeStep].date }
-                    </Typography>
-                </Stack>
-
-                <Button variant="outlined" fullWidth endIcon={<RestartAltIcon />} onClick={resetAll} >Reset all</Button>
-            </Box> */}
         </Box>
     )
 }
