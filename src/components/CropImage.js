@@ -76,11 +76,12 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
             <ReactCrop
                 crop={crop}
                 keepSelection
+                locked
                 renderSelectionAddon={() => {
                     return (
                         <Box display="flex" justifyContent="center" position="absolute" width="100%" top="100%">
                             <Typography variant={breakpointCheck ? "h5" : "body1"} align="center" color={"white"}>
-                                Crop and Resize if needed
+                                Adjust if needed
                             </Typography>
                         </Box>
                     )
