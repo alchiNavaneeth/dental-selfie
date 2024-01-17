@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/dental-selfie/static/css/main.83514106.css",
-    "main.js": "/dental-selfie/static/js/main.cd259180.js",
+    "main.css": "/dental-selfie/static/css/main.cc394905.css",
+    "main.js": "/dental-selfie/static/js/main.dd716008.js",
     "static/js/787.776f64fc.chunk.js": "/dental-selfie/static/js/787.776f64fc.chunk.js",
+    "static/media/home-vector.svg": "/dental-selfie/static/media/home-vector.1d0d7d8c3489d43a13b43f8eb9ae3b96.svg",
+    "static/media/front.svg": "/dental-selfie/static/media/front.af008085f845c7c1a5cb806c7a374fff.svg",
+    "static/media/right.svg": "/dental-selfie/static/media/right.85313b6f6b6ef41bba5d050ab94c1596.svg",
+    "static/media/left.svg": "/dental-selfie/static/media/left.a5ead14f216e0f1075ed750dff370de7.svg",
     "index.html": "/dental-selfie/index.html",
-    "main.83514106.css.map": "/dental-selfie/static/css/main.83514106.css.map",
-    "main.cd259180.js.map": "/dental-selfie/static/js/main.cd259180.js.map",
+    "main.cc394905.css.map": "/dental-selfie/static/css/main.cc394905.css.map",
+    "main.dd716008.js.map": "/dental-selfie/static/js/main.dd716008.js.map",
     "787.776f64fc.chunk.js.map": "/dental-selfie/static/js/787.776f64fc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.83514106.css",
-    "static/js/main.cd259180.js"
+    "static/css/main.cc394905.css",
+    "static/js/main.dd716008.js"
   ]
 }
