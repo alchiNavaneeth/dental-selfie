@@ -220,7 +220,7 @@ export const Report = () => {
                                 <Box mt={4} overflow="hidden" width="100%">
                                     <img src={step.imgPath} alt="Captured" width="100%" style={{ borderRadius: "10px" }} height="100%" />
                                 </Box>
-                                <Typography variant={breakpointCheck ? "body1" : "caption"} color={theme.palette.text.main}>
+                                <Typography variant={breakpointCheck ? "body2" : "caption"} color={theme.palette.text.main}>
                                     Captured on {step.date}
                                 </Typography>
                             </Box>

@@ -65,7 +65,7 @@ const App = () => {
             <div>
               <TextField
                 InputProps={{ sx: { borderRadius: "50px", padding: "0px 1rem" } }}
-                InputLabelProps={{sx: { paddingLeft: "1rem" }}}
+                InputLabelProps={{sx: { paddingLeft: ".2rem" }}}
                 fullWidth
                 error={error ? true : false}
                 id="outlined-error-helper-text"
@@ -97,41 +97,6 @@ const App = () => {
           <img width="100%" height={breakpointCheck ? "650px" : "300px"} src={HomeVector} alt="Home Vector" />
         </Box>
       </Box>
-
-      {/* {
-        !match &&
-        <Box
-          className="App"
-          height="100vh"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-        >
-
-          <Stack
-            alignItems="center"
-            justifyContent="center"
-            height="100%"
-            padding={"0 2rem"}
-          >
-
-            <Typography variant="h5" align="center" color={theme.palette.blueGrey.blueGrey2} fontWeight={600} marginBottom={"6px"}>
-              Dental AI Observation
-            </Typography>
-
-            <Typography variant="body2" align="center" color={theme.palette.grey.variant3} marginBottom={"60px"}>
-              Our AI will analyse the photos and give you a health rating based on the result.
-            </Typography>
-
-            <form>
-              <label htmlFor="username">Enter your name</label>
-              <input type="text" id='username' placeholder='username' value={username ? username : name} onChange={handleUsernameChange} required />
-              {error && <p>{error}</p>}
-              <Button className='submit-btn' variant="contained" fullWidth color='primary' onClick={handleStart}>Get Started</Button>
-            </form>
-          </Stack>
-        </Box>
-      } */}
     </Box>
   );
 }

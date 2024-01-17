@@ -56,7 +56,7 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
             top={0}
             left={0}
             width="100vw"
-            height="100vh"
+            height={breakpointCheck ? "100vh" : "100%"}
             overflow="hidden"
             display="flex"
             flexDirection="column"
@@ -73,47 +73,32 @@ export const CropImage = ({ capturedImg, setShowCrop, handleImage, handleCamera 
                 }}
             />
 
-            <Box
-                className="crop-box"
-                width="100%"
-                height={breakpointCheck ? "100%" : "90%"}
-                position="absolute"
-                top={0}
-                left={0}
-                display="flex"
-                flexDirection="row"
-                justifyContent="center"
-                alignItems="center"
+            <ReactCrop
+                crop={crop}
+                keepSelection
+                renderSelectionAddon={() => {
+                    return (
+                        <Box display="flex" justifyContent="center" position="absolute" width="100%" top="100%">
+                            <Typography variant={breakpointCheck ? "h5" : "body1"} align="center" color={"white"}>
+                                Crop and Resize if needed
+                            </Typography>
+                        </Box>
+                    )
+                }}
+                onChange={(pixelCrop, percentCrop) => setCrop(percentCrop)}
             >
-                <ReactCrop
-                    crop={crop}
-                    keepSelection
-                    onDragEnd={(e) => {
-                        console.log(e.target.clientWidth, e.target.clientHeight)
-                    }}
-                    renderSelectionAddon={() => {
-                        return (
-                            <Box display="flex" justifyContent="center" position="absolute" width="100%" top="100%">
-                                <Typography variant={breakpointCheck ? "h5" : "body1"} align="center" color={"white"}>
-                                    Crop and Resize if needed
-                                </Typography>
-                            </Box>
-                        )
-                    }}
-                    onChange={(pixelCrop, percentCrop) => setCrop(percentCrop)}
-                >
-                    <img
-                        ref={imageRef}
-                        src={capturedImg}
-                        onLoad={onImageLoaded}
-                        alt="Img"
-                    />
-                </ReactCrop>
-            </Box>
+                <img
+                    ref={imageRef}
+                    src={capturedImg}
+                    onLoad={onImageLoaded}
+                    alt="Img"
+                    width="100%"
+                />
+            </ReactCrop>
 
             <Box
                 position="absolute"
-                bottom={"10%"}
+                bottom={breakpointCheck ? "10%" : "6%"}
                 display="flex"
                 justifyContent="space-around"
                 alignItems="center"

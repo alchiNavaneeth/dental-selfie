@@ -58,35 +58,6 @@ export const Pager = ({ number }) => {
             >
                 <img src={LeftImage} alt="Left View" width="100%" height="100%" />
             </Box>
-
-
-            {/* <Box className={`number`}>
-                <Box
-                    className={`inside-number ${selected >= 1 && "selected"}`}
-                    bgcolor={selected >= 1 ? theme.palette.success.main : theme.palette.grey.main}
-                    color={selected >= 1 ? "white" : theme.palette.grey.main}
-                >
-                    1
-                </Box>
-            </Box>
-            <Box className={`number ${selected >= 2 && "selected"}`}>
-                <Box
-                    className={`inside-number ${selected >= 2 && "selected"}`}
-                    bgcolor={selected >= 2 ? theme.palette.success.main : theme.palette.grey.main}
-                    color={selected >= 2 ? "white" : theme.palette.grey.main}
-                >
-                    2
-                </Box>
-            </Box>
-            <Box className={`number ${selected >= 3 && "selected"}`}>
-                <Box
-                    className={`inside-number ${selected >= 3 && "selected"}`}
-                    bgcolor={selected >= 3 ? theme.palette.success.main : theme.palette.grey.main}
-                    color={selected >= 3 ? "white" : theme.palette.grey.main}
-                >
-                    3
-                </Box>
-            </Box> */}
         </Box>
     )
 }
